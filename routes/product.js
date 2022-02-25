@@ -3,18 +3,18 @@ const router = express.Router();
 const { Product } = require('../models')
 const Redis = require('redis')
 
-let redisClient;
+// let redisClient;
 
-(async () => {
-  redisClient = Redis.createClient();
+// (async () => {
+//   redisClient = Redis.createClient();
 
-  redisClient.on('error', (err) => console.log('Redis Client Error', err));
+//   redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
-  await redisClient.connect();
+//   await redisClient.connect();
   
-})();
+// })();
 
-const DEFAULT_EXPIRATION = 3600
+// const DEFAULT_EXPIRATION = 3600
 
 //only admin can create a new product
 router.post('/new', async (req, res) => {
@@ -29,17 +29,17 @@ router.post('/new', async (req, res) => {
 })
 //anyone can access the product lists
 router.get('/', async (req, res) => {
-    const products = await redisClient.get('products');
-    if(products != null){
-        console.log("Cache hit")
-        return res.json(JSON.parse(products))
-    }
+    // const products = await redisClient.get('products');
+    // if(products != null){
+    //     console.log("Cache hit")
+    //     return res.json(JSON.parse(products))
+    // }
 
 
     try{
-        console.log("Cache missed")
+        // console.log("Cache missed")
         const products = await Product.findAll();
-        redisClient.setEx("products", DEFAULT_EXPIRATION, JSON.stringify(products))
+        //redisClient.setEx("products", DEFAULT_EXPIRATION, JSON.stringify(products))
         return res.json(products)
 
     }catch (err) {
@@ -51,17 +51,17 @@ router.get('/', async (req, res) => {
 // anyone can access the specified product
 router.get('/:product_id', async (req, res) => {
     const { product_id } = req.params;
-    const product = await redisClient.get(`products/${product_id}`);
-    if(product != null){
-        console.log("Cache hit")
-        return res.json(JSON.parse(product))
-    }
+    // const product = await redisClient.get(`products/${product_id}`);
+    // if(product != null){
+    //     console.log("Cache hit")
+    //     return res.json(JSON.parse(product))
+    // }
     try{
-        console.log("Cache missed")
+        //console.log("Cache missed")
         const product = await Product.findOne({
             where: { product_id}
         })
-        redisClient.setEx(`products/${product_id}`, DEFAULT_EXPIRATION, JSON.stringify(product))
+        //redisClient.setEx(`products/${product_id}`, DEFAULT_EXPIRATION, JSON.stringify(product))
         return res.json(product)
     }catch (err) {
         console.log(err)
