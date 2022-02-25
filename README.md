@@ -52,7 +52,7 @@ For local development you will need two terminals open, one for the api-backend 
 cd server
 #by doing this, you db will have data, instead of empty and you have to mannually input it
 sequelize db:seed:all 
-nodemon app.js
+nodemon index.js
 ```
 
 ```bash
@@ -113,7 +113,7 @@ git push heroku main
 .
 ├── README.md
 ├── <strong>api</strong>
-│   ├── app.js
+│   ├── index.js
 │   ├── <strong>config</strong>
 │   │   └── config.json
 │   ├── <strong>controllers</strong>
@@ -136,7 +136,7 @@ git push heroku main
 │   │   └── robots.txt
 │   └── <strong>src</strong>
 │       ├── App.css
-│       ├── App.js
+│       ├── index.js
 │       ├── App.test.js
 │       ├── <strong>components</strong>
 │       │   ├── Loading.js
