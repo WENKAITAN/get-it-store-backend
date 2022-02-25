@@ -12,7 +12,7 @@ const cors = require('cors')
 var morgan = require('morgan')
 const path = require('path');
 const app = express();
-
+app.use(cors())
 const port = process.env.PORT || 8000;
 // if(process.env.NODE_ENV==='production') {
 //   app.use(express.static(path.join(__dirname, 'build')));
