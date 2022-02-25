@@ -13,13 +13,6 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 8000;
-// if(process.env.NODE_ENV === 'production'){
-//   app.use(express.static("build"));
-//   app.get("*", (req, res) => {
-//     req.sendFile(path.resolve(__dirname, "build", "index.html"))
-//   })
-// }
-// for production use, we serve the static react build folder
 if(process.env.NODE_ENV==='production') {
   app.use(express.static(path.join(__dirname, 'build')));
 
