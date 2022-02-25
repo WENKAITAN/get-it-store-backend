@@ -14,14 +14,14 @@ const path = require('path');
 const app = express();
 
 const port = process.env.PORT || 8000;
-if(process.env.NODE_ENV==='production') {
-  app.use(express.static(path.join(__dirname, 'build')));
+// if(process.env.NODE_ENV==='production') {
+//   app.use(express.static(path.join(__dirname, 'build')));
 
-  // all unknown routes should be handed to our react app
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-}
+//   // all unknown routes should be handed to our react app
+//   app.get('*', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//   });
+// }
 app.use(express.json());
 // add http request logging to help us debug and audit app use
 const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
