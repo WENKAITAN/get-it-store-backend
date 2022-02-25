@@ -1,8 +1,11 @@
 {
   "name": "api-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.17.1"
+  },
   "description": "An api backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
