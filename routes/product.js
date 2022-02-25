@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Product } = require('../models')
-const Redis = require('redis')
+// const Redis = require('redis')
 
 // let redisClient;
 
