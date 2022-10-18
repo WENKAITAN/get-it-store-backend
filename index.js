@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
+const stripe = require('stripe')('sk_test_51K0rGYLq2uwQtNZbisQqIgtIw4CsnCGR09NaMcPFH1JCajIMc2ui8x8X9fqJkL1bEBfKmjjXdgIPNQj7bk8W8B6j00xuguaGty')
 
 app.use('/api/', index);
 app.use('/api/user', user);
